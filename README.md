@@ -1,0 +1,2 @@
+# Snapshot.spoon
+Hammerspoon snapshot
