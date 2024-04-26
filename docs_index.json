@@ -1,0 +1,19 @@
+[
+  {
+    "desc": "It can record all windows' information to a cache file and",
+    "name": "Snapshot",
+    "type": "Module"
+  },
+  {
+    "desc": "Record all windows' information to cache file",
+    "module": "Snapshot",
+    "name": "record_all_windows",
+    "type": "Method"
+  },
+  {
+    "desc": "Restore all windows' information from cache file",
+    "module": "Snapshot",
+    "name": "restore_all_windows",
+    "type": "Method"
+  }
+]
