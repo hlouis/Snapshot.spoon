@@ -8,27 +8,27 @@ Snapshot is a Hammerspoon spoon that records and restores all windows' informati
 
 2. Clone this repository to your Hammerspoon spoon directory:
 
-   ```bash
-   git clone https://github.com/yourusername/Snapshot.spoon.git ~/.hammerspoon/Spoons/Snapshot.spoon
-   ```
+    ```bash
+    git clone https://github.com/yourusername/Snapshot.spoon.git ~/.hammerspoon/Spoons/Snapshot.spoon
+    ```
 
 3. Require and configure the spoon in your `~/.hammerspoon/init.lua`:
 
-   ```lua
-   local Snapshot = hs.loadSpoon("Snapshot")
+    ```lua
+    local Snapshot = hs.loadSpoon("Snapshot")
 
-   -- Configuration
-   Snapshot.cacheEnabled = true -- Enable or disable caching
+    -- Configuration
+    Snapshot.cacheEnabled = true -- Enable or disable caching
 
-   -- Bindings
-   hs.hotkey.bind({"cmd", "alt", "ctrl"}, "R", function()
-       Snapshot:record_all_windows()
-   end)
+    -- Bindings
+    hs.hotkey.bind({"cmd", "alt", "ctrl"}, "R", function()
+        Snapshot:record_all_windows()
+    end)
 
-   hs.hotkey.bind({"cmd", "alt", "ctrl"}, "T", function()
-       Snapshot:restore_all_windows()
-   end)
-   ```
+    hs.hotkey.bind({"cmd", "alt", "ctrl"}, "T", function()
+        Snapshot:restore_all_windows()
+    end)
+    ```
 
 4. Reload your Hammerspoon configuration.
 
@@ -56,6 +56,19 @@ The following information is recorded for each window:
 - Screen UUID
 - Frame (position and size)
 - Full Screen Status
+
+### IPC
+
+``` lua
+-- Make sure cliInstall
+local ret = hs.ipc.cliInstall("/opt/homebrew")
+print('ret ', ret)
+```
+
+``` shell
+hs -q -c "hs.loadSpoon('Snapshot'):record_all_windows('Home')"
+hs -q -c "hs.loadSpoon('Snapshot'):restore_all_windows('Home')"
+```
 
 ## License
 

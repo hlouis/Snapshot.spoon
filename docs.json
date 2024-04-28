@@ -10,14 +10,14 @@
       {
         "def": "Snapshot:record_all_windows()",
         "desc": "Record all windows' information to cache file",
-        "doc": "Record all windows' information to cache file\n\nParameters:\n * None\n\nReturns:\n * None",
+        "doc": "Record all windows' information to cache file\n\nParameters:\n * scene - The name of the scene to be recorded. Alternatively, set it to nil to prompt the user to input the scene name or choose an existing scene name. (optional)\n\nReturns:\n * None",
         "examples": [],
         "file": "./init.lua",
-        "lineno": "92",
+        "lineno": "206",
         "name": "record_all_windows",
         "notes": [],
         "parameters": [
-          " * None"
+          " * scene - The name of the scene to be recorded. Alternatively, set it to nil to prompt the user to input the scene name or choose an existing scene name. (optional)"
         ],
         "returns": [
           " * None"
@@ -29,14 +29,14 @@
       {
         "def": "Snapshot:restore_all_windows()",
         "desc": "Restore all windows' information from cache file",
-        "doc": "Restore all windows' information from cache file\n\nParameters:\n * None\n\nReturns:\n * None",
+        "doc": "Restore all windows' information from cache file\n\nParameters:\n * scene - The name of the scene to be restore. Alternatively, set it to nil to prompt the user to input the scene name or choose an existing scene name. (optional)\n\nReturns:\n * None",
         "examples": [],
         "file": "./init.lua",
-        "lineno": "134",
+        "lineno": "261",
         "name": "restore_all_windows",
         "notes": [],
         "parameters": [
-          " * None"
+          " * scene - The name of the scene to be restore. Alternatively, set it to nil to prompt the user to input the scene name or choose an existing scene name. (optional)"
         ],
         "returns": [
           " * None"
@@ -53,14 +53,14 @@
       {
         "def": "Snapshot:record_all_windows()",
         "desc": "Record all windows' information to cache file",
-        "doc": "Record all windows' information to cache file\n\nParameters:\n * None\n\nReturns:\n * None",
+        "doc": "Record all windows' information to cache file\n\nParameters:\n * scene - The name of the scene to be recorded. Alternatively, set it to nil to prompt the user to input the scene name or choose an existing scene name. (optional)\n\nReturns:\n * None",
         "examples": [],
         "file": "./init.lua",
-        "lineno": "92",
+        "lineno": "206",
         "name": "record_all_windows",
         "notes": [],
         "parameters": [
-          " * None"
+          " * scene - The name of the scene to be recorded. Alternatively, set it to nil to prompt the user to input the scene name or choose an existing scene name. (optional)"
         ],
         "returns": [
           " * None"
@@ -72,14 +72,14 @@
       {
         "def": "Snapshot:restore_all_windows()",
         "desc": "Restore all windows' information from cache file",
-        "doc": "Restore all windows' information from cache file\n\nParameters:\n * None\n\nReturns:\n * None",
+        "doc": "Restore all windows' information from cache file\n\nParameters:\n * scene - The name of the scene to be restore. Alternatively, set it to nil to prompt the user to input the scene name or choose an existing scene name. (optional)\n\nReturns:\n * None",
         "examples": [],
         "file": "./init.lua",
-        "lineno": "134",
+        "lineno": "261",
         "name": "restore_all_windows",
         "notes": [],
         "parameters": [
-          " * None"
+          " * scene - The name of the scene to be restore. Alternatively, set it to nil to prompt the user to input the scene name or choose an existing scene name. (optional)"
         ],
         "returns": [
           " * None"
