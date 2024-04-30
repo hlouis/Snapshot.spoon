@@ -17,9 +17,6 @@ Snapshot is a Hammerspoon spoon that records and restores all windows' informati
     ```lua
     local Snapshot = hs.loadSpoon("Snapshot")
 
-    -- Configuration
-    Snapshot.cacheEnabled = true -- Enable or disable caching
-
     -- Bindings
     hs.hotkey.bind({"cmd", "alt", "ctrl"}, "R", function()
         Snapshot:record_all_windows()
@@ -44,28 +41,28 @@ Press `Cmd + Alt + Ctrl + T` to restore all windows' positions from the cache fi
 
 ### Scenario Use Case
 
-- When switching between different scenarios (e.g., work, home, coffee shop), Snapshot helps you restore all windows to their previous positions in the current scenario.
+-   When switching between different scenarios (e.g., work, home, coffee shop), Snapshot helps you restore all windows to their previous positions in the current scenario.
 
 ### Recorded Window Information
 
 The following information is recorded for each window:
 
-- Window ID
-- Bundle ID
-- Space ID
-- Screen UUID
-- Frame (position and size)
-- Full Screen Status
+-   Window ID
+-   Bundle ID
+-   Space ID
+-   Screen UUID
+-   Frame (position and size)
+-   Full Screen Status
 
 ### IPC
 
-``` lua
+```lua
 -- Make sure cliInstall
 local ret = hs.ipc.cliInstall("/opt/homebrew")
 print('ret ', ret)
 ```
 
-``` shell
+```shell
 hs -q -c "hs.loadSpoon('Snapshot'):record_all_windows('Home')"
 hs -q -c "hs.loadSpoon('Snapshot'):restore_all_windows('Home')"
 ```
