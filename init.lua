@@ -55,6 +55,9 @@ local function get_opened_win(wid, bundle_id)
 end
 
 local function get_all_saved_scene()
+    if not hs.fs.attributes(cache_root) then
+        return
+    end
     local scenes = {}
     for f in hs.fs.dir(cache_root) do
         if f ~= '.' and f ~= '..' and f ~= '.DS_Store' then
