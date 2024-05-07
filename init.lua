@@ -1,5 +1,5 @@
 local wf = hs.window.filter
-local cache_root = os.getenv("HOME") .. '/.cache/hammerspoon/'
+local cache_root = os.getenv('HOME') .. '/.cache/hammerspoon/'
 
 local function get_all_screens()
     return hs.screen.allScreens()
@@ -63,7 +63,7 @@ local function get_all_saved_scene()
         if f ~= '.' and f ~= '..' and f ~= '.DS_Store' then
             local path = cache_root .. f
             local attrs = hs.fs.attributes(path)
-            if attrs.mode == "directory" then
+            if attrs.mode == 'directory' then
                 table.insert(scenes, f)
             end
         end
@@ -77,7 +77,7 @@ local function make_cache_exist(scene)
     end
     local root = cache_root .. scene .. '/'
     if hs.fs.attributes(root) then
-        os.execute("rm -rf " .. root)
+        os.execute('rm -rf ' .. root)
     end
     hs.fs.mkdir(root)
 end
@@ -112,7 +112,7 @@ local function load_from_cache(scene, screen_uuid)
     local ret = f:read('*a')
     f:close()
 
-    local fn, err = load("return " .. ret)
+    local fn, err = load('return ' .. ret)
     if err then
         return nil, err
     end
@@ -142,14 +142,33 @@ local function restore_win_from_shot(wid, bid, shot)
 
     -- Move the window to its original screen
     if target_screen and screen_uuid ~= shot.screen_uuid then
-        win:moveToScreen(target_screen)
+        -- hammerspoon can't move fullscreen windows
+        -- @read https://github.com/Hammerspoon/hammerspoon/issues/1787
+        if win:isFullScreen() then
+            win:setFullScreen(false)
+            win:moveToScreen(target_screen)
+            hs.timer.doAfter(0.6, function()
+                win:setFullScreen(true)
+            end)
+        else
+            win:moveToScreen(target_screen)
+        end
     end
 
     -- Restore window frame and fullscreen state
     if shot.is_full_screen then
         win:setFullScreen(true)
     else
-        win:setFrame(hs.geometry.rect(shot.frame._x, shot.frame._y, shot.frame._w, shot.frame._h))
+        if win:isFullScreen() then
+            win:setFullScreen(false)
+            hs.timer.doAfter(0.6, function()
+                win:setFrame(hs.geometry.rect(shot.frame._x, shot.frame._y, shot.frame._w, shot.frame._h))
+                hs.spaces.moveWindowToSpace(win, shot.space_id, true)
+            end)
+        else
+            win:setFrame(hs.geometry.rect(shot.frame._x, shot.frame._y, shot.frame._w, shot.frame._h))
+            hs.spaces.moveWindowToSpace(win, shot.space_id, true)
+        end
     end
 
     return true
@@ -167,13 +186,7 @@ local function confirm_scene_dialog(exist_scenes)
         content = content .. options
     end
 
-    local choice, input = hs.dialog.textPrompt(
-        "Snapshot",
-        content,
-        "",
-        "Confirm",
-        "Cancel"
-    )
+    local choice, input = hs.dialog.textPrompt('Snapshot', content, '', 'Confirm', 'Cancel')
 
     if choice == 'Cancel' or not input or input == '' then
         print('cancel or empty input ... ')
@@ -183,7 +196,6 @@ local function confirm_scene_dialog(exist_scenes)
     local scene = exist_scenes[tonumber(input)] or input
     return scene
 end
-
 
 --- ========= Snapshot =========
 --- Snapshot is a Hammerspoon spoon that records and restores all windows' information.
@@ -216,14 +228,15 @@ print('[snapshot] ', port)
 --- Returns:
 ---  * None
 function obj:record_all_windows(scene)
-
     if not scene then
         -- Get all the scenes that have been saved previously
         local exist_scenes = get_all_saved_scene()
         -- Ask the user to select the scene to restore
         scene = confirm_scene_dialog(exist_scenes)
     end
-    if not scene then return end
+    if not scene then
+        return
+    end
 
     print('[snapshot] record_all_windows scene: ' .. scene)
     make_cache_exist(scene)
@@ -271,7 +284,6 @@ end
 --- Returns:
 ---  * None
 function obj:restore_all_windows(scene)
-
     if not scene then
         -- Get all the scenes that have been saved previously
         local exist_scenes = get_all_saved_scene()
@@ -279,7 +291,9 @@ function obj:restore_all_windows(scene)
         scene = confirm_scene_dialog(exist_scenes)
     end
 
-    if not scene then return end
+    if not scene then
+        return
+    end
 
     if not hs.fs.attributes(cache_root .. scene) then
         print('[snapshot] scene not found: ' .. scene)
