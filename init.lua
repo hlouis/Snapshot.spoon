@@ -218,6 +218,27 @@ local port = hs.ipc.localPort('snapshot', function(_, status, args)
 end)
 print('[snapshot] ', port)
 
+--- Snapshot:set_cache_root(path)
+--- Method
+--- Set the root path of the cache file
+---
+--- Parameters:
+---  * path - The root path of the cache file
+---   (e.g., '/Users/yourname/.cache/hammerspoon/') (optional)
+---   If not set, the default path is '/Users/yourname/.cache/hammerspoon/'
+---   You can get the current user's home directory by os.getenv('HOME')
+---
+--- Returns:
+---  * None
+function obj:set_cache_root(path)
+    if not hs.fs.attributes(path) then
+        print('[snapshot] set_cache_root: path is not exist !!!', path)
+        return
+    end
+    cache_root = path
+    print('[snapshot] set_cache_root: ', cache_root)
+end
+
 --- Snapshot:record_all_windows()
 --- Method
 --- Record all windows' information to cache file

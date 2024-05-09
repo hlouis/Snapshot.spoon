@@ -17,6 +17,9 @@ Snapshot is a Hammerspoon spoon that records and restores all windows' informati
     ```lua
     local Snapshot = hs.loadSpoon("Snapshot")
 
+    -- Set the cache directory
+    Snapshot:set_cache_root(os.getenv('HOME') .. '/.cache/myPath/')
+
     -- Bindings
     hs.hotkey.bind({"cmd", "alt", "ctrl"}, "R", function()
         Snapshot:record_all_windows()
@@ -53,6 +56,14 @@ The following information is recorded for each window:
 -   Screen UUID
 -   Frame (position and size)
 -   Full Screen Status
+
+### Snapshot Cache Directory
+
+Snapshot saves its cache files in the following directory:
+
+```lua
+-- Default:
+local cache_root = os.getenv('HOME') .. '/.cache/hammerspoon/'
 
 ### IPC
 
