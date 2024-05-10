@@ -64,6 +64,7 @@ Snapshot saves its cache files in the following directory:
 ```lua
 -- Default:
 local cache_root = os.getenv('HOME') .. '/.cache/hammerspoon/'
+```
 
 ### IPC
 
