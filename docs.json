@@ -13,7 +13,7 @@
         "doc": "Record all windows' information to cache file\n\nParameters:\n * scene - The name of the scene to be recorded. Alternatively, set it to nil to prompt the user to input the scene name or choose an existing scene name. (optional)\n\nReturns:\n * None",
         "examples": [],
         "file": "./init.lua",
-        "lineno": "206",
+        "lineno": "242",
         "name": "record_all_windows",
         "notes": [],
         "parameters": [
@@ -32,7 +32,7 @@
         "doc": "Restore all windows' information from cache file\n\nParameters:\n * scene - The name of the scene to be restore. Alternatively, set it to nil to prompt the user to input the scene name or choose an existing scene name. (optional)\n\nReturns:\n * None",
         "examples": [],
         "file": "./init.lua",
-        "lineno": "261",
+        "lineno": "298",
         "name": "restore_all_windows",
         "notes": [],
         "parameters": [
@@ -42,6 +42,25 @@
           " * None"
         ],
         "signature": "Snapshot:restore_all_windows()",
+        "stripped_doc": "",
+        "type": "Method"
+      },
+      {
+        "def": "Snapshot:set_cache_root(path)",
+        "desc": "Set the root path of the cache file",
+        "doc": "Set the root path of the cache file\n\nParameters:\n * path - The root path of the cache file\n  (e.g., '/Users/yourname/.cache/hammerspoon/') (optional)\n  If not set, the default path is '/Users/yourname/.cache/hammerspoon/'\n  You can get the current user's home directory by os.getenv('HOME')\n\nReturns:\n * None",
+        "examples": [],
+        "file": "./init.lua",
+        "lineno": "221",
+        "name": "set_cache_root",
+        "notes": [],
+        "parameters": [
+          " * path - The root path of the cache file (e.g., '/Users/yourname/.cache/hammerspoon/') (optional) If not set, the default path is '/Users/yourname/.cache/hammerspoon/' You can get the current user's home directory by os.getenv('HOME')"
+        ],
+        "returns": [
+          " * None"
+        ],
+        "signature": "Snapshot:set_cache_root(path)",
         "stripped_doc": "",
         "type": "Method"
       }
@@ -56,7 +75,7 @@
         "doc": "Record all windows' information to cache file\n\nParameters:\n * scene - The name of the scene to be recorded. Alternatively, set it to nil to prompt the user to input the scene name or choose an existing scene name. (optional)\n\nReturns:\n * None",
         "examples": [],
         "file": "./init.lua",
-        "lineno": "206",
+        "lineno": "242",
         "name": "record_all_windows",
         "notes": [],
         "parameters": [
@@ -75,7 +94,7 @@
         "doc": "Restore all windows' information from cache file\n\nParameters:\n * scene - The name of the scene to be restore. Alternatively, set it to nil to prompt the user to input the scene name or choose an existing scene name. (optional)\n\nReturns:\n * None",
         "examples": [],
         "file": "./init.lua",
-        "lineno": "261",
+        "lineno": "298",
         "name": "restore_all_windows",
         "notes": [],
         "parameters": [
@@ -85,6 +104,25 @@
           " * None"
         ],
         "signature": "Snapshot:restore_all_windows()",
+        "stripped_doc": "",
+        "type": "Method"
+      },
+      {
+        "def": "Snapshot:set_cache_root(path)",
+        "desc": "Set the root path of the cache file",
+        "doc": "Set the root path of the cache file\n\nParameters:\n * path - The root path of the cache file\n  (e.g., '/Users/yourname/.cache/hammerspoon/') (optional)\n  If not set, the default path is '/Users/yourname/.cache/hammerspoon/'\n  You can get the current user's home directory by os.getenv('HOME')\n\nReturns:\n * None",
+        "examples": [],
+        "file": "./init.lua",
+        "lineno": "221",
+        "name": "set_cache_root",
+        "notes": [],
+        "parameters": [
+          " * path - The root path of the cache file (e.g., '/Users/yourname/.cache/hammerspoon/') (optional) If not set, the default path is '/Users/yourname/.cache/hammerspoon/' You can get the current user's home directory by os.getenv('HOME')"
+        ],
+        "returns": [
+          " * None"
+        ],
+        "signature": "Snapshot:set_cache_root(path)",
         "stripped_doc": "",
         "type": "Method"
       }

@@ -15,5 +15,11 @@
     "module": "Snapshot",
     "name": "restore_all_windows",
     "type": "Method"
+  },
+  {
+    "desc": "Set the root path of the cache file",
+    "module": "Snapshot",
+    "name": "set_cache_root",
+    "type": "Method"
   }
 ]
